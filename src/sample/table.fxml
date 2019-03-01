@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.control.*?>
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXDrawer?>
+<?import com.jfoenix.controls.JFXHamburger?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="table" fx:id="anchorPane" minHeight="0.0" minWidth="0.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="750.0" prefWidth="800.0" styleClass="anchorPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="model.ControllerTable">
+   <children>
+      <TableView fx:id="tablePacients" layoutX="10.0" layoutY="10.0" nodeOrientation="LEFT_TO_RIGHT" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+      <AnchorPane layoutX="-3.0" prefHeight="348.0" prefWidth="809.0">
+         <children>
+            <PieChart fx:id="idPieChart" layoutY="12.0" prefHeight="288.0" prefWidth="506.0" AnchorPane.bottomAnchor="48.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="12.0" />
+            <PieChart fx:id="PieChart2" prefHeight="180.0" prefWidth="192.0" />
+            <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" layoutX="73.0" maxWidth="1.7976931348623157E308" onAction="#btnChart" prefHeight="31.0" prefWidth="361.0" text="Chart" textAlignment="CENTER" textOverrun="LEADING_ELLIPSIS" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="72.0" AnchorPane.rightAnchor="72.0" />
+         </children>
+      </AnchorPane>
+      <JFXButton fx:id="btnLoadFile" alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" layoutX="602.0" layoutY="225.0" lineSpacing="1.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#clickLoadFile" prefHeight="59.0" prefWidth="144.0" ripplerFill="#6154b8" text="Load CSV" textAlignment="CENTER">
+         <effect>
+            <Bloom />
+         </effect>
+      </JFXButton>
+      <JFXHamburger fx:id="hamburger" alignment="TOP_CENTER" minWidth="-Infinity" prefHeight="16.0" prefWidth="25.0" AnchorPane.rightAnchor="37.0" AnchorPane.topAnchor="32.0" />
+      <JFXDrawer fx:id="drawer" defaultDrawerSize="190.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="225.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" />
+   </children>
+</AnchorPane>

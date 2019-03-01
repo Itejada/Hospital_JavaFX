@@ -1,0 +1,27 @@
+.root{
+    -fx-background-color: #4CAF50;
+
+}
+
+.button{
+-fx-background-color: #3984C1;
+
+}
+
+.button:hover{
+-fx-border-color: black;
+-fx-background-color: #9DFAD8;
+-fx-text-color: #faff;
+-fx-text-alignment: center;
+
+}
+/*Drawer*/
+.box{
+-fx-background-color: #3984C1;
+
+}
+
+.anchorPane{
+-fx-background-color: #8AB3D4;
+
+}

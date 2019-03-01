@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.chart.*?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="anchorPane" fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="800.0" styleClass="anchorPane" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="model.ControllerLlista">
+    <children>
+        <VBox alignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <TableView fx:id="tablePacients" onMouseClicked="#clickTable" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                <JFXButton fx:id="btnLoadFile" alignment="CENTER" contentDisplay="CENTER" lineSpacing="1.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#clickLoadFile" text="Load" textAlignment="CENTER">
+               <effect>
+                  <Bloom />
+               </effect></JFXButton>
+                <AnchorPane>
+                    <children>
+                        <TabPane fx:id="TabPane" layoutY="-6.0" minHeight="-Infinity" nodeOrientation="RIGHT_TO_LEFT" prefHeight="292.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE" tabMaxHeight="50.0" tabMaxWidth="50.0" tabMinHeight="35.0" tabMinWidth="70.0" AnchorPane.bottomAnchor="-39.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-6.0">
+                            <tabs>
+                                <Tab fx:id="tabFiltre" text="Filtre">
+                                    <content>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                            <children>
+                                                <HBox alignment="TOP_CENTER" layoutX="-7.0" layoutY="-11.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="214.0" prefWidth="793.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-7.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="0.0">
+                                                    <children>
+                                                        <JFXTextField fx:id="txtNom" labelFloat="true" maxWidth="1.7976931348623157E308" onKeyTyped="#changeText" promptText="Nom" />
+                                                        <JFXTextField fx:id="txtCognoms" labelFloat="true" maxWidth="1.7976931348623157E308" onKeyTyped="#changeText" promptText="Cognoms" />
+                                                        <JFXTextField fx:id="txtDNI" labelFloat="true" maxWidth="1.7976931348623157E308" promptText="DNI" />
+                                                        <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" onAction="#btnCerca" prefHeight="20.0" prefWidth="93.0" text="Cerca" textAlignment="CENTER" textOverrun="LEADING_ELLIPSIS" HBox.hgrow="ALWAYS">
+                                                            <padding>
+                                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                                            </padding>
+                                                            <HBox.margin>
+                                                                <Insets />
+                                                            </HBox.margin>
+                                                        </JFXButton>
+                                                    </children>
+                                                </HBox>
+                                            </children>
+                                        </AnchorPane>
+                                    </content>
+                                </Tab>
+                                <Tab fx:id="tabDades" onSelectionChanged="#loadChart" text="Dades">
+                                    <content>
+                                        <AnchorPane prefHeight="234.0" prefWidth="793.0">
+                                            <children>
+                                                <PieChart fx:id="idPieChart" layoutX="4.0" layoutY="12.0" prefHeight="255.0" prefWidth="600.0" AnchorPane.bottomAnchor="11.0" AnchorPane.leftAnchor="4.0" AnchorPane.rightAnchor="-4.0" AnchorPane.topAnchor="12.0" />
+                                                <JFXButton alignment="CENTER" contentDisplay="CENTER" depthTest="DISABLE" layoutX="68.0" layoutY="108.0" nodeOrientation="RIGHT_TO_LEFT" onAction="#btnChart" prefHeight="57.0" prefWidth="83.0" text="Chart" textAlignment="CENTER" textOverrun="LEADING_ELLIPSIS" AnchorPane.bottomAnchor="107.0" />
+                                            </children>
+                                        </AnchorPane>
+                                    </content>
+                                </Tab>
+                            </tabs>
+                        </TabPane>
+                    </children>
+                </AnchorPane>
+            </children>
+        </VBox>
+      <JFXDrawer fx:id="drawer" defaultDrawerSize="190.0" layoutX="-9.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="231.0" />
+      <JFXHamburger fx:id="hamburger" alignment="TOP_CENTER" layoutX="10.0" layoutY="10.0" minWidth="-Infinity" prefHeight="16.0" prefWidth="25.0" AnchorPane.rightAnchor="16.0" />
+    </children>
+</AnchorPane>

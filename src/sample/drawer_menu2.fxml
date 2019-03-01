@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="-Infinity" styleClass="box" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView id="img" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="/img/hospital.png" />
+         </image></ImageView>
+      <JFXButton id="boton1" fx:id="btn1" prefHeight="60.0" prefWidth="218.0" text="Home" />
+      <JFXButton id="boton2" fx:id="btn2" prefHeight="60.0" prefWidth="218.0" text="Table patient" />
+      <JFXButton id="boton3" fx:id="btn3" prefHeight="60.0" prefWidth="218.0" text="Example teacher" />
+      <JFXButton id="boton4" fx:id="btn4" prefHeight="60.0" prefWidth="218.0" text="(ﾉ ◕ ヮ◕)ﾉ*:･ﾟ✧" />
+      <JFXButton id="exit" fx:id="exit" prefHeight="60.0" prefWidth="218.0" text="Exit" />
+   </children>
+</VBox>

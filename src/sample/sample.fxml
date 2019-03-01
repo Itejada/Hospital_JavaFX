@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="anchorPane" minHeight="700.0" minWidth="800.0" styleClass="anchorPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="model.Controller">
+   <children>
+      <Text layoutX="299.0" layoutY="263.0" smooth="false" stroke="#f7f5f500" strokeMiterLimit="0.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to my Hospital" textAlignment="CENTER" wrappingWidth="202.0">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Text>
+      <JFXButton fx:id="btnStuden" layoutX="485.0" layoutY="356.0" onMouseClicked="#clickStuden" prefHeight="96.0" prefWidth="152.0" text="Example student" AnchorPane.rightAnchor="160.0" />
+      <JFXButton fx:id="btnTeacher" layoutX="170.0" layoutY="356.0" onMouseClicked="#clickTeacher" prefHeight="96.0" prefWidth="152.0" text="Example teacher" AnchorPane.leftAnchor="160.0" />
+      <JFXHamburger fx:id="hamburger" alignment="TOP_RIGHT" prefHeight="16.0" prefWidth="25.0" AnchorPane.rightAnchor="37.0" AnchorPane.topAnchor="32.0" />
+      <JFXDrawer fx:id="drawer" cacheShape="false" centerShape="false" defaultDrawerSize="190.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="225.0" scaleShape="false" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" />
+   </children>
+</AnchorPane>
