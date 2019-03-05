@@ -37,6 +37,7 @@ import java.util.ResourceBundle;
 import static javafx.scene.input.MouseEvent.MOUSE_CLICKED;
 
 public class ControllerTable implements Initializable {
+    boolean tablaCreada= false;
 
     @FXML
     private AnchorPane anchorPane;
@@ -91,6 +92,7 @@ public class ControllerTable implements Initializable {
             VBox box = FXMLLoader.load(getClass().getResource("\\..\\sample\\drawer_menu.fxml"));
             box.setBackground(controller.setBackgroundColor("50F556"));
             drawer.setSidePane(box);
+            drawer.setVisible(false);
 
             for (Node node : box.getChildren()) {
                 if (node.getId() != null) {
@@ -142,43 +144,48 @@ public class ControllerTable implements Initializable {
             csvFile = file.getAbsolutePath();
             setTableView();
             btnLoadFile.setText("Loaded");
+            setChart();
         } else {
             btnLoadFile.setText("File is loaded");
         }
     }
 
     private void setTableView() {
-        TableColumn DNI = new TableColumn("DNI");
-        TableColumn Nom = new TableColumn("Nom");
-        TableColumn Cognoms = new TableColumn("Cognoms");
-        TableColumn DataNaix = new TableColumn("Data de Naixament");
-        TableColumn Genre = new TableColumn("Gènere");
-        TableColumn Telefon = new TableColumn("Telèfon");
-        TableColumn pes = new TableColumn("Pes");
-        TableColumn Alçada = new TableColumn("Alçada");
+        if (!tablaCreada) {
+            TableColumn DNI = new TableColumn("DNI");
+            TableColumn Nom = new TableColumn("Nom");
+            TableColumn Cognoms = new TableColumn("Cognoms");
+            TableColumn DataNaix = new TableColumn("Data de Naixament");
+            TableColumn Genre = new TableColumn("Gènere");
+            TableColumn Telefon = new TableColumn("Telèfon");
+            TableColumn pes = new TableColumn("Pes");
+            TableColumn Alçada = new TableColumn("Alçada");
 
         // COMPTE!!!! les propietats han de tenir getters i setters
-        DNI.setCellValueFactory(new PropertyValueFactory<Pacient, String>("DNI"));
-        Nom.setCellValueFactory(new PropertyValueFactory<Pacient, String>("Nom"));
-        Cognoms.setCellValueFactory(new PropertyValueFactory<Pacient, String>("Cognoms"));
-        DataNaix.setCellValueFactory(new PropertyValueFactory<Pacient, String>("DataNaixament"));
-        Genre.setCellValueFactory(new PropertyValueFactory<Pacient, String>("genere"));
-        Telefon.setCellValueFactory(new PropertyValueFactory<Pacient, String>("Telefon"));
-        pes.setCellValueFactory(new PropertyValueFactory<Pacient, Float>("Pes"));
-        Alçada.setCellValueFactory(new PropertyValueFactory<Pacient, Integer>("Alçada"));
-
+            DNI.setCellValueFactory(new PropertyValueFactory<Pacient, String>("DNI"));
+            Nom.setCellValueFactory(new PropertyValueFactory<Pacient, String>("Nom"));
+            Cognoms.setCellValueFactory(new PropertyValueFactory<Pacient, String>("Cognoms"));
+            DataNaix.setCellValueFactory(new PropertyValueFactory<Pacient, String>("DataNaixament"));
+            Genre.setCellValueFactory(new PropertyValueFactory<Pacient, String>("genere"));
+            Telefon.setCellValueFactory(new PropertyValueFactory<Pacient, String>("Telefon"));
+            pes.setCellValueFactory(new PropertyValueFactory<Pacient, Float>("Pes"));
+            Alçada.setCellValueFactory(new PropertyValueFactory<Pacient, Integer>("Alçada"));
+            tablaCreada=true;
         tablePacients.getColumns().addAll(DNI, Nom, Cognoms, DataNaix, Genre, Telefon, pes, Alçada);
 
-
+    }else{
+        }
         //data.add(new Pacient("111", "n", "co", LocalDate.of(2000, 12, 12), Persona.Genere.HOME, "55555", 5.4f, 100));
         loadData();
         data.addAll(p);
         tablePacients.setItems(data);
 
+
     }
 
     private void loadData() {
         Hospital hospital = new Hospital();
+        p.clear();
         p.addAll(hospital.loadPacients(csvFile));
     }
 

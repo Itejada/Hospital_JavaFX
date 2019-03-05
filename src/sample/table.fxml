@@ -10,7 +10,7 @@
 <?import com.jfoenix.controls.JFXHamburger?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="table" fx:id="anchorPane" minHeight="0.0" minWidth="0.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="750.0" prefWidth="800.0" styleClass="anchorPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="model.ControllerTable">
+<AnchorPane id="anchorPane" fx:id="anchorPane" minHeight="0.0" minWidth="0.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="750.0" prefWidth="800.0" styleClass="anchorPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="model.ControllerTable">
    <children>
       <TableView fx:id="tablePacients" layoutX="10.0" layoutY="10.0" nodeOrientation="LEFT_TO_RIGHT" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
       <AnchorPane layoutX="-3.0" prefHeight="348.0" prefWidth="809.0">

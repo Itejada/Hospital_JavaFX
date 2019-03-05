@@ -1,10 +1,14 @@
 package model;
 
+import com.jfoenix.controls.JFXDrawer;
+import com.jfoenix.controls.JFXHamburger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -12,7 +16,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,8 +31,17 @@ import static model.ControllerTable.csvFile;
 public class ControllerFilter implements Initializable {
 
     @FXML
-    private TableView<Pacient> tablePacients;
+    private AnchorPane anchorPane;
 
+    @FXML
+    private JFXHamburger hamburger;
+
+    @FXML
+    private JFXDrawer drawer;
+
+    @FXML
+    private TableView<Pacient> tablePacients;
+    Controller controller=new Controller();
     @FXML
     private TextField tel_filter;
     @FXML
@@ -40,6 +56,18 @@ public class ControllerFilter implements Initializable {
     private List<Pacient> p = new ArrayList<>();
     private ObservableList<Pacient> data;
 
+    public void setAnchorPane(AnchorPane _anchorPane) {
+
+        // this._anchorPane.getParent();
+        this.anchorPane.getChildren().clear();
+        this.anchorPane.getChildren().add(_anchorPane);
+        drawer.open();
+        _anchorPane.getId();
+        if (_anchorPane.getId().equals("table")) {
+            _anchorPane.setBackground(controller.setBackgroundColor("#ffffff"));
+
+        }
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -49,6 +77,51 @@ public class ControllerFilter implements Initializable {
         } else {
             setTableView();
         }
+        try {
+            VBox box = FXMLLoader.load(getClass().getResource("\\..\\sample\\drawer_menu.fxml"));
+            box.setBackground(controller.setBackgroundColor("50F556"));
+            drawer.setSidePane(box);
+            drawer.setVisible(false);
+
+            for (Node node : box.getChildren()) {
+                if (node.getId() != null) {
+
+                    node.addEventHandler(MouseEvent.MOUSE_CLICKED, (e) -> {
+                        switch (node.getId()) {
+
+                            case "boton1":
+                                setAnchorPane(controller.getSample("sample"));
+                                anchorPane.setBackground(controller.setBackgroundColor("#4CAF50"));
+                                break;
+
+                            case "boton2":
+                                setAnchorPane(controller.getSample("table"));
+                                anchorPane.setBackground(controller.setBackgroundColor("#5CAFF0"));
+                                break;
+
+                            case "boton3":
+                                setAnchorPane(controller.getSample("llista_profe"));
+                                anchorPane.setBackground(controller.setBackgroundColor("#4CAFF0"));
+                                break;
+
+                            case "boton4":
+                                anchorPane.setBackground(controller.setBackgroundColor(controller.randomColor().toString()));
+                                break;
+                            case "boton5":
+                                setAnchorPane(controller.getSample("filter"));
+                                anchorPane.setBackground(controller.setBackgroundColor("#4CAFF0"));
+                                break;
+                            case "exit":
+                                System.exit(0);
+                                break;
+                        }
+                    });
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        controller.transicion(hamburger, drawer);
 
     }
     private void setTableView() {

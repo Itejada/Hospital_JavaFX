@@ -84,6 +84,7 @@ public class ControllerLlista implements Initializable {
             VBox box = FXMLLoader.load(getClass().getResource("\\..\\sample\\drawer_menu.fxml"));
             box.setBackground(controller.setBackgroundColor("50F556"));
             drawer.setSidePane(box);
+            drawer.setVisible(false);
 
             for (Node node : box.getChildren()) {
                 if (node.getId() != null) {

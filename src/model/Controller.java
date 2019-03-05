@@ -59,7 +59,7 @@ public class Controller  implements Initializable {
             VBox box = FXMLLoader.load(getClass().getResource("\\..\\sample\\drawer_menu.fxml"));
           //   box.setBackground(setBackgroundColor("50F556"));
             drawer.setSidePane(box);
-            drawer.setVisible(true);
+            drawer.setVisible(false);
 
             for (Node node : box.getChildren()) {
                 if (node.getId() != null) {
@@ -100,6 +100,9 @@ public class Controller  implements Initializable {
             e.printStackTrace();
         }
         transicion(hamburger,drawer);
+
+
+
     }
 
     public AnchorPane getSample(String sample) {
@@ -125,9 +128,14 @@ public class Controller  implements Initializable {
             transition.play();
             if (_drawer.isOpened()) {
                 _drawer.close();
+                _drawer.setVisible(false);
+
             } else {
+                _drawer.setVisible(true);
                 _drawer.open();
+
             }
+
         });
     }
 
