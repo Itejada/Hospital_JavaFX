@@ -85,6 +85,10 @@ public class Controller  implements Initializable {
                             case "boton4":
                                 anchorPane.setBackground(setBackgroundColor(randomColor().toString()));
                                 break;
+                            case "boton5":
+                                setAnchorPane(getSample("filter"));
+                                anchorPane.setBackground(setBackgroundColor("#4CAFF0"));
+                                break;
                             case "exit":
                                 System.exit(0);
                                 break;

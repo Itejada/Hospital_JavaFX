@@ -32,6 +32,11 @@ public class ControllerLlista implements Initializable {
 
     private String csvFile = null;
     private List<Pacient> p = new ArrayList<>();
+
+    public ObservableList<Pacient> getData() {
+        return data;
+    }
+
     private ObservableList<Pacient> data;
 
     @FXML
@@ -103,6 +108,10 @@ public class ControllerLlista implements Initializable {
 
                             case "boton4":
                                 anchorPane.setBackground(controller.setBackgroundColor(controller.randomColor().toString()));
+                                break;
+                            case "boton5":
+                                setAnchorPane(controller.getSample("filter"));
+                                anchorPane.setBackground(controller.setBackgroundColor("#4CAFF0"));
                                 break;
                             case "exit":
                                 System.exit(0);

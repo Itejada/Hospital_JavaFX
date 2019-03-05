@@ -34,14 +34,17 @@ import java.util.Collections;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import static javafx.scene.input.MouseEvent.MOUSE_CLICKED;
+
 public class ControllerTable implements Initializable {
 
     @FXML
     private AnchorPane anchorPane;
+
     @FXML
     private TableView<Pacient> tablePacients;
 
-    private String csvFile = null;
+    protected static String csvFile = null;
     private List<Pacient> p = new ArrayList<>();
     private ObservableList<Pacient> data;
     Controller controller = new Controller();
@@ -56,6 +59,7 @@ public class ControllerTable implements Initializable {
     private JFXHamburger hamburger;
     @FXML
     private JFXButton btnLoadFile;
+
 
     public void setAnchorPane(AnchorPane anchorPane) {
 
@@ -91,7 +95,7 @@ public class ControllerTable implements Initializable {
             for (Node node : box.getChildren()) {
                 if (node.getId() != null) {
 
-                    node.addEventHandler(MouseEvent.MOUSE_CLICKED, (e) -> {
+                    node.addEventHandler(MOUSE_CLICKED, (e) -> {
                         switch (node.getId()) {
 
                             case "boton1":
@@ -112,6 +116,10 @@ public class ControllerTable implements Initializable {
                             case "boton4":
                                 anchorPane.setBackground(controller.setBackgroundColor(controller.randomColor().toString()));
                                 break;
+                            case "boton5":
+                                setAnchorPane(controller.getSample("filter"));
+                                anchorPane.setBackground(controller.setBackgroundColor("#4CAFF0"));
+                                break;
                             case "exit":
                                 System.exit(0);
                                 break;
@@ -126,8 +134,8 @@ public class ControllerTable implements Initializable {
     }
 
     @FXML
-    void clickLoadFile(ActionEvent event) {
-        if (csvFile == null) {
+    void clickLoadFile(MouseEvent event) {
+        if (csvFile == null || event.getClickCount() == 2) {
             FileChooser fc = new FileChooser();
             fc.setTitle("Select csv file");
             File file = fc.showOpenDialog(null);
@@ -140,6 +148,9 @@ public class ControllerTable implements Initializable {
     }
 
     private void setTableView() {
+            tablePacients.setItems(null);
+            tablePacients.getColumns().removeAll();
+
         TableColumn DNI = new TableColumn("DNI");
         TableColumn Nom = new TableColumn("Nom");
         TableColumn Cognoms = new TableColumn("Cognoms");
@@ -174,6 +185,7 @@ public class ControllerTable implements Initializable {
         p.addAll(hospital.loadPacients(csvFile));
     }
 
+
     @FXML
     void btnChart(ActionEvent event) {
         setChart();
@@ -198,16 +210,16 @@ public class ControllerTable implements Initializable {
         /*                  ----------------------------------------------------------                                          */
         PieChart2.getData().clear();
         ArrayList<String> edades = new ArrayList<String>();
-        p.forEach(pacient ->  edades.add(calcularEdad(pacient.getDataNaixament())));
+        p.forEach(pacient -> edades.add(calcularEdad(pacient.getDataNaixament())));
 
-        long edad ;
-      //  edad=p.stream().filter(pacient -> calcularEdad(pacient.getDataNaixament()) == i).count();
+        long edad;
+        //  edad=p.stream().filter(pacient -> calcularEdad(pacient.getDataNaixament()) == i).count();
 
         PieChart2.setTitle("Edats");
         for (int i = 0; i < 100; i++) {
-            edad = Collections.frequency(edades,Integer.toString(i));
-            if (edad != 0){
-            PieChart2.getData().add(new PieChart.Data(""+i, edad));
+            edad = Collections.frequency(edades, Integer.toString(i));
+            if (edad != 0) {
+                PieChart2.getData().add(new PieChart.Data("" + i, edad));
             }
 
         }
@@ -225,7 +237,15 @@ public class ControllerTable implements Initializable {
         LocalDate ahora = LocalDate.parse(LocalDate.now().format(fmt));
         Period periodo = Period.between(fechaNac, ahora);
 
-        return  Integer.toString(periodo.getYears());
+        return Integer.toString(periodo.getYears());
     }
 
+    public TableView<Pacient> getTablePacients() {
+        return tablePacients;
+    }
+
+    public ObservableList<Pacient> getData() {
+        return data;
+    }
 }
+
