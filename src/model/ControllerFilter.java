@@ -52,7 +52,7 @@ public class ControllerFilter implements Initializable {
 
     }
     private void setTableView() {
-        tablePacients.getColumns().remove(0);
+        //data.clear();
         TableColumn DNI = new TableColumn("DNI");
         TableColumn Nom = new TableColumn("Nom");
         TableColumn Cognoms = new TableColumn("Cognoms");

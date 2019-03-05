@@ -148,9 +148,6 @@ public class ControllerTable implements Initializable {
     }
 
     private void setTableView() {
-            tablePacients.setItems(null);
-            tablePacients.getColumns().removeAll();
-
         TableColumn DNI = new TableColumn("DNI");
         TableColumn Nom = new TableColumn("Nom");
         TableColumn Cognoms = new TableColumn("Cognoms");

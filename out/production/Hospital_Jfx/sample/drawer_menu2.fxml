@@ -14,6 +14,7 @@
          </image></ImageView>
       <JFXButton id="boton1" fx:id="btn1" prefHeight="60.0" prefWidth="218.0" text="Home" />
       <JFXButton id="boton2" fx:id="btn2" prefHeight="60.0" prefWidth="218.0" text="Table patient" />
+      <JFXButton id="boton3" fx:id="btn31" prefHeight="60.0" prefWidth="218.0" text="Example teacher" />
       <JFXButton id="boton3" fx:id="btn3" prefHeight="60.0" prefWidth="218.0" text="Example teacher" />
       <JFXButton id="boton4" fx:id="btn4" prefHeight="60.0" prefWidth="218.0" text="(ﾉ ◕ ヮ◕)ﾉ*:･ﾟ✧" />
       <JFXButton id="exit" fx:id="exit" prefHeight="60.0" prefWidth="218.0" text="Exit" />

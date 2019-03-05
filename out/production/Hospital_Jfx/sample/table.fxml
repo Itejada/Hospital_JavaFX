@@ -20,7 +20,7 @@
             <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" layoutX="73.0" maxWidth="1.7976931348623157E308" onAction="#btnChart" prefHeight="31.0" prefWidth="361.0" text="Chart" textAlignment="CENTER" textOverrun="LEADING_ELLIPSIS" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="72.0" AnchorPane.rightAnchor="72.0" />
          </children>
       </AnchorPane>
-      <JFXButton fx:id="btnLoadFile" alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" layoutX="602.0" layoutY="225.0" lineSpacing="1.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#clickLoadFile" prefHeight="59.0" prefWidth="144.0" ripplerFill="#6154b8" text="Load CSV" textAlignment="CENTER">
+      <JFXButton fx:id="btnLoadFile" alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" layoutX="602.0" layoutY="225.0" lineSpacing="1.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#clickLoadFile" prefHeight="59.0" prefWidth="144.0" ripplerFill="#6154b8" text="Load CSV" textAlignment="CENTER">
          <effect>
             <Bloom />
          </effect>
