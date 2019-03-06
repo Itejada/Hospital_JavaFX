@@ -39,6 +39,7 @@ public class ControllerFilter implements Initializable {
 
     @FXML
     private JFXDrawer drawer;
+    boolean tablaCreada=false;
 
     @FXML
     private TableView<Pacient> tablePacients1;
@@ -130,36 +131,36 @@ public class ControllerFilter implements Initializable {
 
     }
     private void setTableView() {
-        //data.clear();
-        TableColumn DNI = new TableColumn("DNI");
-        TableColumn Nom = new TableColumn("Nom");
-        TableColumn Cognoms = new TableColumn("Cognoms");
-        TableColumn DataNaix = new TableColumn("Data de Naixament");
-        TableColumn Genre = new TableColumn("Gènere");
-        TableColumn Telefon = new TableColumn("Telèfon");
-        TableColumn pes = new TableColumn("Pes");
-        TableColumn Alçada = new TableColumn("Alçada");
+        if (!tablaCreada) {
+            TableColumn DNI = new TableColumn("DNI");
+            TableColumn Nom = new TableColumn("Nom");
+            TableColumn Cognoms = new TableColumn("Cognoms");
+            TableColumn DataNaix = new TableColumn("Data de Naixament");
+            TableColumn Genre = new TableColumn("Gènere");
+            TableColumn Telefon = new TableColumn("Telèfon");
+            TableColumn pes = new TableColumn("Pes");
+            TableColumn Alçada = new TableColumn("Alçada");
 
-        // COMPTE!!!! les propietats han de tenir getters i setters
-        DNI.setCellValueFactory(new PropertyValueFactory<Pacient, String>("DNI"));
-        Nom.setCellValueFactory(new PropertyValueFactory<Pacient, String>("Nom"));
-        Cognoms.setCellValueFactory(new PropertyValueFactory<Pacient, String>("Cognoms"));
-        DataNaix.setCellValueFactory(new PropertyValueFactory<Pacient, String>("DataNaixament"));
-        Genre.setCellValueFactory(new PropertyValueFactory<Pacient, String>("genere"));
-        Telefon.setCellValueFactory(new PropertyValueFactory<Pacient, String>("Telefon"));
-        pes.setCellValueFactory(new PropertyValueFactory<Pacient, Float>("Pes"));
-        Alçada.setCellValueFactory(new PropertyValueFactory<Pacient, Integer>("Alçada"));
+            // COMPTE!!!! les propietats han de tenir getters i setters
+            DNI.setCellValueFactory(new PropertyValueFactory<Pacient, String>("DNI"));
+            Nom.setCellValueFactory(new PropertyValueFactory<Pacient, String>("Nom"));
+            Cognoms.setCellValueFactory(new PropertyValueFactory<Pacient, String>("Cognoms"));
+            DataNaix.setCellValueFactory(new PropertyValueFactory<Pacient, String>("DataNaixament"));
+            Genre.setCellValueFactory(new PropertyValueFactory<Pacient, String>("genere"));
+            Telefon.setCellValueFactory(new PropertyValueFactory<Pacient, String>("Telefon"));
+            pes.setCellValueFactory(new PropertyValueFactory<Pacient, Float>("Pes"));
+            Alçada.setCellValueFactory(new PropertyValueFactory<Pacient, Integer>("Alçada"));
+            tablaCreada=true;
+            tablePacients.getColumns().addAll(DNI, Nom, Cognoms, DataNaix, Genre, Telefon, pes, Alçada);
+            tablePacients1.getColumns().addAll(DNI, Nom, Cognoms, DataNaix, Genre, Telefon, pes, Alçada);
 
-        tablePacients.getColumns().addAll(DNI, Nom, Cognoms, DataNaix, Genre, Telefon, pes, Alçada);
+        }
         //data.add(new Pacient("111", "n", "co", LocalDate.of(2000, 12, 12), Persona.Genere.HOME, "55555", 5.4f, 100));
         loadData();
-        data.clear();
         data.addAll(p);
+        tablePacients.setItems(null);
         tablePacients.setItems(data);
 
-
-        tablePacients1.getColumns().addAll(DNI, Nom, Cognoms, DataNaix, Genre, Telefon, pes, Alçada);
-        data.clear();
         data.addAll(pacientsLlistaEspera);
         tablePacients1.setItems(data);
 

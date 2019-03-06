@@ -6,7 +6,7 @@ import java.time.Period;
 
 public class Persona  {
     public enum Genere {
-        HOME,DONA
+        HOME,DONA,ALTRE
     }
 
     private String Nom;

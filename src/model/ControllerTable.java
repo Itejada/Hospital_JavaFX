@@ -205,9 +205,13 @@ public class ControllerTable implements Initializable {
         long homes = p.stream()
                 .filter(pacient -> pacient.getGenere() == Persona.Genere.HOME)
                 .count();
+        long altres = p.stream()
+                .filter(pacient -> pacient.getGenere() == Persona.Genere.ALTRE)
+                .count();
         idPieChart.setTitle("Gènere");
         idPieChart.getData().add(new PieChart.Data(Persona.Genere.DONA.toString(), dones));
         idPieChart.getData().add(new PieChart.Data(Persona.Genere.HOME.toString(), homes));
+        idPieChart.getData().add(new PieChart.Data(Persona.Genere.ALTRE.toString(), altres));
         /*                  ----------------------------------------------------------                                          */
         PieChart2.getData().clear();
         ArrayList<String> edades = new ArrayList<String>();

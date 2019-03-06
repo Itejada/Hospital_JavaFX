@@ -16,7 +16,7 @@
       <AnchorPane layoutX="-3.0" prefHeight="348.0" prefWidth="809.0">
          <children>
             <PieChart fx:id="idPieChart" layoutY="12.0" prefHeight="288.0" prefWidth="506.0" AnchorPane.bottomAnchor="48.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="12.0" />
-            <PieChart fx:id="PieChart2" prefHeight="180.0" prefWidth="192.0" />
+            <PieChart fx:id="PieChart2" prefHeight="205.0" prefWidth="225.0" />
             <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" layoutX="73.0" maxWidth="1.7976931348623157E308" onAction="#btnChart" prefHeight="31.0" prefWidth="361.0" text="Chart" textAlignment="CENTER" textOverrun="LEADING_ELLIPSIS" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="72.0" AnchorPane.rightAnchor="72.0" />
          </children>
       </AnchorPane>
