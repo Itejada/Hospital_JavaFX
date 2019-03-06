@@ -14,6 +14,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -40,6 +41,9 @@ public class ControllerFilter implements Initializable {
     private JFXDrawer drawer;
 
     @FXML
+    private TableView<Pacient> tablePacients1;
+    Controller controller1=new Controller();
+    @FXML
     private TableView<Pacient> tablePacients;
     Controller controller=new Controller();
     @FXML
@@ -54,6 +58,7 @@ public class ControllerFilter implements Initializable {
     private TextField cognom_filter, dni_filter, nom_filter;
 
     private List<Pacient> p = new ArrayList<>();
+    private List<Pacient> pacientsLlistaEspera = new ArrayList<>();
     private ObservableList<Pacient> data;
 
     public void setAnchorPane(AnchorPane _anchorPane) {
@@ -146,12 +151,17 @@ public class ControllerFilter implements Initializable {
         Alçada.setCellValueFactory(new PropertyValueFactory<Pacient, Integer>("Alçada"));
 
         tablePacients.getColumns().addAll(DNI, Nom, Cognoms, DataNaix, Genre, Telefon, pes, Alçada);
-
-
         //data.add(new Pacient("111", "n", "co", LocalDate.of(2000, 12, 12), Persona.Genere.HOME, "55555", 5.4f, 100));
         loadData();
+        data.clear();
         data.addAll(p);
         tablePacients.setItems(data);
+
+
+        tablePacients1.getColumns().addAll(DNI, Nom, Cognoms, DataNaix, Genre, Telefon, pes, Alçada);
+        data.clear();
+        data.addAll(pacientsLlistaEspera);
+        tablePacients1.setItems(data);
 
     }
     private void loadData() {
@@ -181,15 +191,22 @@ public class ControllerFilter implements Initializable {
                 .filter(pacient -> pacient.getNom().contains(nom_filter.getText()))
                 .filter((pacient -> pacient.getCognoms().contains(cognom_filter.getText())))
                 .filter((pacient -> pacient.getDNI().contains( dni_filter.getCharacters().toString())))
+                .filter((pacient -> pacient.getTelefon().contains( tel_filter.getCharacters().toString())))
                 .collect(Collectors.toList());
         data.addAll(pacients);
 
     }
 
-    public void clickTable(MouseEvent event) {
+    public void clickTable(MouseEvent event ) {
         //Cal verificar si hi ha alguna selecció feta al fer doble click
-        if (event.getClickCount() == 2 && !tablePacients.getSelectionModel().isEmpty()) {
-            System.out.println(tablePacients.getSelectionModel().getSelectedItem().getNom());
+        boolean modelNoEmpty=  !tablePacients.getSelectionModel().isEmpty();
+        if (event.getClickCount() == 2 && modelNoEmpty ) {
+            System.out.println();
+        pacientsLlistaEspera.add(tablePacients.getSelectionModel().getSelectedItem());
+            System.out.println(pacientsLlistaEspera.get(0));
+            setTableView();
+
         }
     }
+
 }

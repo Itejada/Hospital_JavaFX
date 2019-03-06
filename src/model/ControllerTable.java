@@ -196,9 +196,6 @@ public class ControllerTable implements Initializable {
 
     }
 
-    public void loadChart(Event event) {
-        setChart();
-    }
 
     private void setChart() {
         idPieChart.getData().clear();
